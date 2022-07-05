@@ -8,4 +8,9 @@ class Pawn:
     IMG_W = pg.image.load(os.path.join("assets","wp.png"))
 
     def __init__(self, colour):
-        pass
+        self.colour = colour
+
+    @property
+    def FEN_letter(self):
+        if self.colour == "white": return "P"
+        if self.colour == "black": return "p"

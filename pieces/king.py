@@ -8,4 +8,9 @@ class King:
     IMG_W = pg.image.load(os.path.join("assets","wk.png"))
 
     def __init__(self, colour):
-        pass
+        self.colour = colour
+
+    @property
+    def FEN_letter(self):
+        if self.colour == "white": return "K"
+        if self.colour == "black": return "k"

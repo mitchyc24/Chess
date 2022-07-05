@@ -9,6 +9,9 @@ from pieces.king import King
 
 
 class Board:
+    '''
+    Board class is reponsible for all things visual on the board. 
+    '''
 
     piece_img_dict = {"p":Pawn.IMG_B, "r":Rook.IMG_B, "n":Knight.IMG_B, "b":Bishop.IMG_B, "q":Queen.IMG_B, "k":King.IMG_B,
         "P":Pawn.IMG_W, "R":Rook.IMG_W, "N":Knight.IMG_W, "B":Bishop.IMG_W, "Q":Queen.IMG_W, "K":King.IMG_W}
@@ -44,17 +47,14 @@ class Board:
     def set_FEN(self, fen):
         self.FEN = fen
 
-
     def _get_pixel_position(self, xy):
         x, y = xy
         dx, dy = self.empty_board.get_size()
         dx //= 8
         dy //= 8
-        return (dx*x, dy*y)
-    
+        return (dx*x, dy*y)  
 
     def _create_board_image(self):
-
         def helper_get_square_pixels(row,col,size):
             col_start = int(size/8 * col)
             col_end = int(col_start + size/8)
@@ -77,3 +77,10 @@ class Board:
                     x,y = pixel
                     pixels[x,y] = tuple(self.settings["board_white_colour"])
         return pg.image.fromstring(img.tobytes(), img.size, img.mode)
+
+    def convert_board_pixels_to_pos(self, board_pixel_xy):
+        x_pixel, y_pixel = board_pixel_xy
+        total_x_pixels, total_y_pixels = self.empty_board.get_size()
+        pos = (int(x_pixel/total_x_pixels*8), int(y_pixel/total_y_pixels*8))
+        print(pos)
+        return pos
