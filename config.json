@@ -1,0 +1,8 @@
+{
+    "window_size" : [1000,1000],
+    "board_size" : [800,800],
+    "bg_colour" : [123,123,123],
+    "board_position" : [100,100],
+    "board_white_colour" : [200,200,200],
+    "board_black_colour" : [100,100,100]
+}
